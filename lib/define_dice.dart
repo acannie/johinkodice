@@ -14,6 +14,12 @@ class DefineDice extends StatelessWidget {
 
     return Column(
       children: <Widget>[
+        InkWell(
+          child: Text("サイコロの目を自動生成！"),
+          onTap: () {
+            nkoController.initDice();
+          },
+        ),
         Container(
           child: ListView.builder(
             // scrollDirection: Axis.horizontal,

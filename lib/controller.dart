@@ -34,7 +34,18 @@ class NkoCharController with ChangeNotifier {
   }
 
   List<String> get dices => _dice;
-  final List<String> _dice = ["う", "お", "こ", "ち", "ま", "ん"];
+  List<String> _dice = ["う", "お", "こ", "ち", "ま", "ん"];
+
+  void initDice() {
+    Set<String> charSet = {};
+    for (String keyword in _keywords) {
+      for (int i = 0; i < keyword.length; i++) {
+        charSet.add(keyword[i]);
+      }
+    }
+    _dice = charSet.toList();
+    notifyListeners();
+  }
 
   void appendNewDice() {
     _dice.add("");
