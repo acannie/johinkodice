@@ -66,8 +66,8 @@ class NkoCharController with ChangeNotifier {
 
   int get diceNum => _diceNum;
   final int _diceNum = 5;
-  List<String> get results => _result;
-  final List<String> _result = [];
+  List<String> get gotDices => _gotDice;
+  final List<String> _gotDice = [];
 
   void _deleteEmptyTextField() {
     _dice.remove("");
@@ -77,24 +77,72 @@ class NkoCharController with ChangeNotifier {
   void generateDice() {
     _deleteEmptyTextField();
 
+    _gotDice.clear();
+    _results.clear();
+
+    notifyListeners();
+
     for (int i = 0; i < _diceNum; i++) {
       Random rand = Random();
       int index = rand.nextInt(_dice.length);
-      _result.add(_dice[index]);
+      _gotDice.add(_dice[index]);
     }
+
+    for (String keyword in _keywords) {
+      _judgment(keyword, gotDices);
+    }
+
     notifyListeners();
   }
 
-  // Future<MemoryImage> _imageFuture;
+  List<String> get results => _results;
+  List<String> _results = [];
 
-  // Future<MemoryImage> get imageFuture => _imageFuture;
+  void _judgment(String keyword, List<String> gotDices) {
+    // result に含まれる最大数
+    int maxCount = (gotDices.length / keyword.length).floor();
 
-  // Future<MemoryImage> pickImage() async {
-  //   _imageFuture = ImagePicker().getImage(source: ImageSource.gallery).then(
-  //       (file) => file.readAsBytes().then((bytes) => new MemoryImage(bytes)));
+    // 接頭語
+    List<String> prefix = [
+      "",
+      "ダブル",
+      "トリプル",
+      "クアドラブル",
+      "クインティブル",
+      "セクスタプル",
+      "セプタプル",
+      "オクタプル",
+      "ノナプル",
+      "ディカプル",
+    ];
 
-  //   // For other components
-  //   notifyListeners();
-  //   return _imageFuture;
-  // }
+    // _results.add(keyword);
+
+    // 多いコンボから順に単語成立を調査
+    for (int i = 0; i < maxCount; i++) {
+      int reversedI = maxCount - i;
+      bool establised = true;
+      for (int j = 0; j < keyword.length; j++) {
+        String c = keyword[j];
+        int neccesaryCount = _count(c, keyword) * reversedI;
+        int existCount = _count(c, gotDices);
+        establised &= (existCount >= neccesaryCount);
+      }
+
+      if (establised) {
+        _results.add("★ " + prefix[reversedI] + keyword + "！");
+        return;
+      }
+    }
+  }
+
+  int _count(String c, dynamic s) {
+    int count = 0;
+    for (int i = 0; i < s.length; i++) {
+      if (s[i] == c) {
+        count++;
+      }
+    }
+    return count;
+  }
 }

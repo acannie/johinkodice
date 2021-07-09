@@ -25,6 +25,19 @@ class Ogehindice extends StatelessWidget {
         ),
         ListView.builder(
           shrinkWrap: true,
+          itemCount: nkoController.gotDices.length,
+          itemBuilder: (BuildContext context, int index) {
+            return Row(
+              children: <Widget>[
+                Expanded(
+                  child: Text(nkoController.gotDices[index]),
+                ),
+              ],
+            );
+          },
+        ),
+        ListView.builder(
+          shrinkWrap: true,
           itemCount: nkoController.results.length,
           itemBuilder: (BuildContext context, int index) {
             return Row(
