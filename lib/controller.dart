@@ -1,3 +1,4 @@
+import 'dart:math';
 import 'dart:async';
 
 import 'package:flutter/material.dart';
@@ -60,6 +61,27 @@ class NkoCharController with ChangeNotifier {
   void clearDice() {
     _dice.clear();
     _dice.add("");
+    notifyListeners();
+  }
+
+  int get diceNum => _diceNum;
+  final int _diceNum = 5;
+  List<String> get results => _result;
+  final List<String> _result = [];
+
+  void _deleteEmptyTextField() {
+    _dice.remove("");
+    _keywords.remove("");
+  }
+
+  void generateDice() {
+    _deleteEmptyTextField();
+
+    for (int i = 0; i < _diceNum; i++) {
+      Random rand = Random();
+      int index = rand.nextInt(_dice.length);
+      _result.add(_dice[index]);
+    }
     notifyListeners();
   }
 
