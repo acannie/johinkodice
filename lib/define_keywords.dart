@@ -60,7 +60,7 @@ class DefineKeywords extends StatelessWidget {
               icon: const Icon(Icons.update),
               onPressed: () {
                 if (nkoController.keywords.isNotEmpty) {
-                  nkoController.clearDice();
+                  nkoController.clearKeyword();
                 }
               },
             ),
