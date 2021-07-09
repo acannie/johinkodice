@@ -5,8 +5,6 @@ import 'controller.dart';
 
 // キーワードを定義するテキストフィールドのリスト
 class DefineKeywords extends StatelessWidget {
-  final List<String> columnTitles = ["色番号", "色相", "彩度", "明度"];
-
   @override
   Widget build(BuildContext context) {
     final NkoCharController nkoController =
@@ -22,28 +20,30 @@ class DefineKeywords extends StatelessWidget {
             // 初期値
             textFieldControllers.add(
                 TextEditingController(text: nkoController.keywords[index]));
-            return Row(children: <Widget>[
-              Expanded(
-                child: TextField(
-                  decoration: const InputDecoration(
-                    border: OutlineInputBorder(),
-                    hintText: "（例）りんご",
+            return Row(
+              children: <Widget>[
+                Expanded(
+                  child: TextField(
+                    decoration: const InputDecoration(
+                      border: OutlineInputBorder(),
+                      hintText: "（例）りんご",
+                    ),
+                    controller: textFieldControllers[index],
+                    onChanged: (text) {
+                      nkoController.keywords[index] = text;
+                    },
                   ),
-                  controller: textFieldControllers[index],
-                  onChanged: (text) {
-                    nkoController.keywords[index] = text;
-                  },
                 ),
-              ),
-              InkWell(
-                child: const Icon(Icons.close),
-                onTap: () {
-                  if (nkoController.keywords.isNotEmpty) {
-                    nkoController.removeFromList(index);
-                  }
-                },
-              )
-            ]);
+                InkWell(
+                  child: const Icon(Icons.close),
+                  onTap: () {
+                    if (nkoController.keywords.isNotEmpty) {
+                      nkoController.removeKeywordAt(index);
+                    }
+                  },
+                )
+              ],
+            );
           },
         ),
         Row(
@@ -52,7 +52,7 @@ class DefineKeywords extends StatelessWidget {
             IconButton(
               icon: const Icon(Icons.add),
               onPressed: () {
-                nkoController.appendToList();
+                nkoController.appendNewKeyword();
               },
             ),
             // 一括削除ボタン
@@ -60,7 +60,7 @@ class DefineKeywords extends StatelessWidget {
               icon: const Icon(Icons.update),
               onPressed: () {
                 if (nkoController.keywords.isNotEmpty) {
-                  nkoController.clear();
+                  nkoController.clearDice();
                 }
               },
             ),

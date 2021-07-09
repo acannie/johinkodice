@@ -17,19 +17,38 @@ class NkoCharController with ChangeNotifier {
     "ちんちん",
   ];
 
-  void appendToList() {
+  void appendNewKeyword() {
     _keywords.add("");
     notifyListeners();
   }
 
-  void removeFromList(int index) {
+  void removeKeywordAt(int index) {
     _keywords.removeAt(index);
     notifyListeners();
   }
 
-  void clear() {
+  void clearKeyword() {
     _keywords.clear();
     _keywords.add("");
+    notifyListeners();
+  }
+
+  List<String> get dices => _dice;
+  final List<String> _dice = ["う", "お", "こ", "ち", "ま", "ん"];
+
+  void appendNewDice() {
+    _dice.add("");
+    notifyListeners();
+  }
+
+  void removeDiceAt(int index) {
+    _dice.removeAt(index);
+    notifyListeners();
+  }
+
+  void clearDice() {
+    _dice.clear();
+    _dice.add("");
     notifyListeners();
   }
 
