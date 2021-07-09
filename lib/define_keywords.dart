@@ -9,10 +9,81 @@ class DefineKeywords extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final NkoCharController upload_controller =
+    final NkoCharController nkoController =
         Provider.of<NkoCharController>(context);
 
-    return Text("define keywords");
+    return Column(
+      children: <Widget>[
+        // ListView(
+        //   shrinkWrap: true,
+        //   padding: const EdgeInsets.all(20.0),
+        //   children: const <Widget>[
+        //     Text("I'm dedicating every day to you"),
+        //     Text('Domestic life was never quite my style'),
+        //     Text('When you smile, you knock me out, I fall apart'),
+        //     Text('And I thought I was so smart'),
+        //   ],
+        // ),
+        Container(
+          child: ListView.builder(
+            shrinkWrap: true,
+            itemCount: nkoController.list.length,
+            itemBuilder: (BuildContext context, int index) {
+              return Row(children: <Widget>[
+                nkoController.list[index],
+                InkWell(
+                  child: Icon(Icons.close),
+                  onTap: () {
+                    if (nkoController.list.length == 1) {
+                      Text("これ以上減らせません。");
+                    } else {
+                      nkoController.removeFromList(index);
+                    }
+                  },
+                )
+              ]);
+            },
+          ),
+        ),
+        Row(
+          children: [
+            IconButton(
+              icon: Icon(Icons.add),
+              onPressed: () {
+                nkoController.appendToList(
+                  Text(
+                    "テキスト" + nkoController.list.length.toString(),
+                    style: TextStyle(fontSize: 20),
+                  ),
+                );
+              },
+            ),
+            IconButton(
+              icon: Icon(Icons.remove),
+              onPressed: () {
+                if (nkoController.list.length == 1) {
+                  Text("これ以上減らせません。");
+                } else {
+                  nkoController.removeFromList(nkoController.list.length - 1);
+                }
+              },
+            ),
+          ],
+        )
+      ],
+    );
+
+    return Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+      Text('top text'),
+      Container(
+          child: ListView.builder(
+              shrinkWrap: true,
+              itemCount: 20,
+              itemBuilder: (BuildContext context, int index) {
+                return index % 2 == 0 ? Text('item no:$index') : Divider();
+              })),
+      Text('end text')
+    ]);
 
     // return FutureBuilder<MyDesignData>(
     //   future: upload_controller.myDesignDataFuture,
