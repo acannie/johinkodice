@@ -8,7 +8,7 @@ import 'ogehindice.dart';
 class Johindice extends StatelessWidget {
   Widget appBarMain() {
     return AppBar(
-      title: const Text('Ogehindice'),
+      title: const Text('JOHINKODICE'),
       backgroundColor: Colors.orange,
       centerTitle: true,
       actions: <Widget>[],
