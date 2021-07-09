@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.blue,
         ),
         home: MultiProvider(
-          child: MyDesigner(),
+          child: Johindice(),
           providers: [
             ChangeNotifierProvider(create: (context) => NkoCharController()),
           ],

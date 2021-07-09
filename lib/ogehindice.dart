@@ -4,16 +4,12 @@ import 'package:provider/provider.dart';
 import 'controller.dart';
 
 // キーワードを定義するテキストフィールドのリスト
-class Ogehindice extends StatelessWidget {
-  final List<String> columnTitles = ["色番号", "色相", "彩度", "明度"];
-
+class PlayJohindice extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final NkoCharController nkoController =
         Provider.of<NkoCharController>(context);
     List<TextEditingController> textFieldControllers = [];
-
-    // return Text("ogehindice");
 
     return Column(
       children: <Widget>[

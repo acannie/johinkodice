@@ -26,7 +26,7 @@ class DefineKeywords extends StatelessWidget {
                   child: TextField(
                     decoration: const InputDecoration(
                       border: OutlineInputBorder(),
-                      hintText: "（例）りんご",
+                      hintText: "（例）イタリア",
                     ),
                     controller: textFieldControllers[index],
                     onChanged: (text) {

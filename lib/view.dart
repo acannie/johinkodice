@@ -5,10 +5,9 @@ import 'define_dice.dart';
 import 'ogehindice.dart';
 
 // ページ全体のレイアウトを生成
-class MyDesigner extends StatelessWidget {
+class Johindice extends StatelessWidget {
   Widget appBarMain() {
     return AppBar(
-      leading: Icon(Icons.menu),
       title: const Text('Ogehindice'),
       backgroundColor: Colors.orange,
       centerTitle: true,
@@ -24,18 +23,16 @@ class MyDesigner extends StatelessWidget {
         child: appBarMain(),
       ),
       body: Center(
-        child: Container(
-          child: SingleChildScrollView(
-            child: Container(
-              padding: EdgeInsets.all(0),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: <Widget>[
-                  DefineKeywords(),
-                  DefineDice(),
-                  Ogehindice(),
-                ],
-              ),
+        child: SingleChildScrollView(
+          child: Container(
+            padding: EdgeInsets.all(0),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: <Widget>[
+                DefineKeywords(),
+                DefineDice(),
+                PlayJohindice(),
+              ],
             ),
           ),
         ),

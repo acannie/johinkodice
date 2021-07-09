@@ -15,7 +15,7 @@ class DefineDice extends StatelessWidget {
     return Column(
       children: <Widget>[
         InkWell(
-          child: Text("サイコロの目を自動生成！"),
+          child: const Text("サイコロの目を自動生成！"),
           onTap: () {
             nkoController.initDice();
           },
@@ -38,7 +38,7 @@ class DefineDice extends StatelessWidget {
                       ],
                       decoration: const InputDecoration(
                         border: OutlineInputBorder(),
-                        hintText: "（例）り",
+                        hintText: "（例）イ",
                       ),
                       controller: textFieldControllers[index],
                       onChanged: (text) {

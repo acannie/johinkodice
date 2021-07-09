@@ -6,16 +6,12 @@ import 'package:provider/provider.dart';
 
 // JOUHINKODICE 全体で使用する変数の状態を管理する
 class NkoCharController with ChangeNotifier {
+  // 単語の管理
   List<String> get keywords => _keywords;
   final List<String> _keywords = [
-    "うんこ",
-    "うんち",
-    "ちんこ",
-    "おちんちん",
-    "おまんまん",
-    "おまんこ",
-    "まんこ",
-    "ちんちん",
+    "イタリア",
+    "イギリス",
+    "フランス",
   ];
 
   void appendNewKeyword() {
@@ -34,8 +30,9 @@ class NkoCharController with ChangeNotifier {
     notifyListeners();
   }
 
+  // サイコロの目の管理
   List<String> get dices => _dice;
-  List<String> _dice = ["う", "お", "こ", "ち", "ま", "ん"];
+  List<String> _dice = ["イ", "タ", "リ", "ア", "ギ", "ス", "フ", "ラ", "ン"];
 
   void initDice() {
     Set<String> charSet = {};
@@ -64,6 +61,7 @@ class NkoCharController with ChangeNotifier {
     notifyListeners();
   }
 
+  // サイコロを振る処理
   int get diceNum => _diceNum;
   final int _diceNum = 5;
   List<String> get gotDices => _gotDice;
@@ -95,11 +93,12 @@ class NkoCharController with ChangeNotifier {
     notifyListeners();
   }
 
+  // 出た目の管理
   List<String> get results => _results;
   List<String> _results = [];
 
   void _judgment(String keyword, List<String> gotDices) {
-    // result に含まれる最大数
+    // keyword に含まれる最大数
     int maxCount = (gotDices.length / keyword.length).floor();
 
     // 接頭語
