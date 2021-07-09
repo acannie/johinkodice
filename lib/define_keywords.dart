@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 
 import 'controller.dart';
 
-// マイデザインのパレットを生成
+// キーワードを定義するテキストフィールドのリスト
 class DefineKeywords extends StatelessWidget {
   final List<String> columnTitles = ["色番号", "色相", "彩度", "明度"];
 
@@ -11,60 +11,56 @@ class DefineKeywords extends StatelessWidget {
   Widget build(BuildContext context) {
     final NkoCharController nkoController =
         Provider.of<NkoCharController>(context);
+    List<TextEditingController> textFieldControllers = [];
 
     return Column(
       children: <Widget>[
-        // ListView(
-        //   shrinkWrap: true,
-        //   padding: const EdgeInsets.all(20.0),
-        //   children: const <Widget>[
-        //     Text("I'm dedicating every day to you"),
-        //     Text('Domestic life was never quite my style'),
-        //     Text('When you smile, you knock me out, I fall apart'),
-        //     Text('And I thought I was so smart'),
-        //   ],
-        // ),
-        Container(
-          child: ListView.builder(
-            shrinkWrap: true,
-            itemCount: nkoController.list.length,
-            itemBuilder: (BuildContext context, int index) {
-              return Row(children: <Widget>[
-                nkoController.list[index],
-                InkWell(
-                  child: Icon(Icons.close),
-                  onTap: () {
-                    if (nkoController.list.length == 1) {
-                      Text("これ以上減らせません。");
-                    } else {
-                      nkoController.removeFromList(index);
-                    }
+        ListView.builder(
+          shrinkWrap: true,
+          itemCount: nkoController.keywords.length,
+          itemBuilder: (BuildContext context, int index) {
+            // 初期値
+            textFieldControllers.add(
+                TextEditingController(text: nkoController.keywords[index]));
+            return Row(children: <Widget>[
+              Expanded(
+                child: TextField(
+                  decoration: const InputDecoration(
+                    border: OutlineInputBorder(),
+                    hintText: "（例）りんご",
+                  ),
+                  controller: textFieldControllers[index],
+                  onChanged: (text) {
+                    nkoController.keywords[index] = text;
                   },
-                )
-              ]);
-            },
-          ),
+                ),
+              ),
+              InkWell(
+                child: const Icon(Icons.close),
+                onTap: () {
+                  if (nkoController.keywords.isNotEmpty) {
+                    nkoController.removeFromList(index);
+                  }
+                },
+              )
+            ]);
+          },
         ),
         Row(
           children: [
+            // 新規作成ボタン
             IconButton(
-              icon: Icon(Icons.add),
+              icon: const Icon(Icons.add),
               onPressed: () {
-                nkoController.appendToList(
-                  Text(
-                    "テキスト" + nkoController.list.length.toString(),
-                    style: TextStyle(fontSize: 20),
-                  ),
-                );
+                nkoController.appendToList();
               },
             ),
+            // 一括削除ボタン
             IconButton(
-              icon: Icon(Icons.remove),
+              icon: const Icon(Icons.update),
               onPressed: () {
-                if (nkoController.list.length == 1) {
-                  Text("これ以上減らせません。");
-                } else {
-                  nkoController.removeFromList(nkoController.list.length - 1);
+                if (nkoController.keywords.isNotEmpty) {
+                  nkoController.clear();
                 }
               },
             ),
@@ -72,135 +68,5 @@ class DefineKeywords extends StatelessWidget {
         )
       ],
     );
-
-    return Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-      Text('top text'),
-      Container(
-          child: ListView.builder(
-              shrinkWrap: true,
-              itemCount: 20,
-              itemBuilder: (BuildContext context, int index) {
-                return index % 2 == 0 ? Text('item no:$index') : Divider();
-              })),
-      Text('end text')
-    ]);
-
-    // return FutureBuilder<MyDesignData>(
-    //   future: upload_controller.myDesignDataFuture,
-    //   builder: (BuildContext context, AsyncSnapshot<MyDesignData> snapshot) {
-    //     if (snapshot.connectionState == ConnectionState.waiting) {
-    //       return CircularProgressIndicator();
-    //     } else if (snapshot.connectionState == ConnectionState.done &&
-    //         null != snapshot.data) {
-    //       var myDesignData = snapshot.data;
-    //       return ConstrainedBox(
-    //         constraints: BoxConstraints(maxWidth: 300),
-    //         child: Table(
-    //           children: <TableRow>[
-    //             TableRow(
-    //               children: columnTitles
-    //                   .map(
-    //                     (columnTitle) => TableCell(
-    //                       // flex: 1,
-    //                       child: Container(
-    //                         decoration: BoxDecoration(
-    //                           border: Border.all(color: Colors.black),
-    //                           color: Colors.white,
-    //                         ),
-    //                         // width: screenSize.width * 0.1,
-    //                         // height: screenSize.height * 0.025,
-    //                         child: AutoSizeText(
-    //                           columnTitle.toString(),
-    //                           maxLines: 1,
-    //                           style: TextStyle(
-    //                             fontSize: 20,
-    //                             color: Colors.black,
-    //                           ),
-    //                           textAlign: TextAlign.center,
-    //                         ),
-    //                       ),
-    //                     ),
-    //                   )
-    //                   .toList(),
-    //             ),
-    //             // information of each color
-    //             for (var i = 0; i < myDesignData.myDesignPalette.length; i++)
-    //               TableRow(
-    //                 children: [
-    //                   TableCell(
-    //                     // flex: 1,
-    //                     child: Container(
-    //                       decoration: BoxDecoration(
-    //                         border: Border.all(color: Colors.black),
-    //                         color: Color.fromRGBO(
-    //                           myDesignData.palette[i][0],
-    //                           myDesignData.palette[i][1],
-    //                           myDesignData.palette[i][2],
-    //                           1,
-    //                         ),
-    //                       ),
-    //                       // width: screenSize.width * 0.1,
-    //                       // height: screenSize.height * 0.025,
-    //                       child: AutoSizeText(
-    //                         "${i + 1}",
-    //                         maxLines: 1,
-    //                         style: TextStyle(
-    //                           fontSize: 20,
-    //                           color: Utils().fontColor(
-    //                             Color.fromRGBO(
-    //                               myDesignData.palette[i][0],
-    //                               myDesignData.palette[i][1],
-    //                               myDesignData.palette[i][2],
-    //                               1,
-    //                             ),
-    //                           ),
-    //                         ),
-    //                         textAlign: TextAlign.center,
-    //                       ),
-    //                     ),
-    //                   ),
-    //                   for (var factor = 0;
-    //                       factor < myDesignData.myDesignPalette[i].length;
-    //                       factor++)
-    //                     TableCell(
-    //                       // flex: 1,
-    //                       child: Container(
-    //                         decoration: BoxDecoration(
-    //                           border: Border.all(color: Colors.black),
-    //                           color: Colors.white,
-    //                         ),
-    //                         child: AutoSizeText(
-    //                           "${myDesignData.myDesignPalette[i][factor]}",
-    //                           maxLines: 1,
-    //                           style: TextStyle(
-    //                             fontSize: 20,
-    //                             color: Colors.black,
-    //                           ),
-    //                           textAlign: TextAlign.center,
-    //                         ),
-    //                       ),
-    //                     ),
-    //                 ],
-    //               )
-    //           ],
-    //         ),
-    //       );
-    //     } else if (null != snapshot.error) {
-    //       return Container(
-    //         child: Text(
-    //           'No Image Selected',
-    //           textAlign: TextAlign.center,
-    //         ),
-    //         height: 100,
-    //         width: 100,
-    //         decoration: BoxDecoration(
-    //           border: Border.all(color: Colors.blue),
-    //         ),
-    //       );
-    //     } else {
-    //       return SizedBox.shrink();
-    //     }
-    //   },
-    // );
   }
 }

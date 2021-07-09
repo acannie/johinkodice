@@ -3,23 +3,33 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-// FEに画像がアップロードされたことを通知
+// JOUHINKODICE 全体で使用する変数の状態を管理する
 class NkoCharController with ChangeNotifier {
-  List<Text> get list => _list;
-  final List<Text> _list = [
-    // const Text(
-    //   "初期値",
-    //   style: TextStyle(fontSize: 20),
-    // ),
+  List<String> get keywords => _keywords;
+  final List<String> _keywords = [
+    "うんこ",
+    "うんち",
+    "ちんこ",
+    "おちんちん",
+    "おまんまん",
+    "おまんこ",
+    "まんこ",
+    "ちんちん",
   ];
 
-  void appendToList(Text widget) {
-    _list.add(widget);
+  void appendToList() {
+    _keywords.add("");
     notifyListeners();
   }
 
   void removeFromList(int index) {
-    _list.removeAt(index);
+    _keywords.removeAt(index);
+    notifyListeners();
+  }
+
+  void clear() {
+    _keywords.clear();
+    _keywords.add("");
     notifyListeners();
   }
 
