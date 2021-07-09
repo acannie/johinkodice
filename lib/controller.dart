@@ -116,15 +116,13 @@ class NkoCharController with ChangeNotifier {
       "ディカプル",
     ];
 
-    // _results.add(keyword);
-
     // 多いコンボから順に単語成立を調査
     for (int i = 0; i < maxCount; i++) {
-      int reversedI = maxCount - i;
+      int reversedI = maxCount - i - 1;
       bool establised = true;
       for (int j = 0; j < keyword.length; j++) {
         String c = keyword[j];
-        int neccesaryCount = _count(c, keyword) * reversedI;
+        int neccesaryCount = _count(c, keyword) * (reversedI + 1);
         int existCount = _count(c, gotDices);
         establised &= (existCount >= neccesaryCount);
       }
