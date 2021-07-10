@@ -34,29 +34,33 @@ class Johindice extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 children: <Widget>[
                   JohinkodiceLayout.titleStyle(
-                    "Keywords",
-                    "assets/bunbougu_memo.png",
-                  ),
-                  JohinkodiceLayout.discription("サイコロを転がして作りたいキーワードを決めよう！"),
-                  DefineKeywords(),
-                  JohinkodiceLayout.titleStyle(
-                    "Dice Number",
-                    "./assets/counter.png",
-                  ),
-                  JohinkodiceLayout.discription("転がすサイコロの数を決めよう！"),
-                  DefineDiceNum(),
-                  JohinkodiceLayout.titleStyle(
-                    "Dice",
-                    "assets/saikoro_145.png",
-                  ),
-                  JohinkodiceLayout.discription("サイコロの目を決めよう！"),
-                  DefineDice(),
-                  JohinkodiceLayout.titleStyle(
                     "Let's Play!",
                     "assets/character_game_dice.png",
                   ),
                   JohinkodiceLayout.discription("サイコロを転がそう！"),
                   PlayJohindice(),
+                  JohinkodiceLayout.titleStyle(
+                    "Settings",
+                    "assets/dougu_spanner.png",
+                  ),
+                  JohinkodiceLayout.subTitleStyle(
+                    "Keywords",
+                    "assets/bunbougu_memo.png",
+                  ),
+                  JohinkodiceLayout.discription("サイコロを転がして作りたいキーワードを決めよう！"),
+                  DefineKeywords(),
+                  JohinkodiceLayout.subTitleStyle(
+                    "Dice Number",
+                    "assets/counter.png",
+                  ),
+                  JohinkodiceLayout.discription("転がすサイコロの数を決めよう！"),
+                  DefineDiceNum(),
+                  JohinkodiceLayout.subTitleStyle(
+                    "Dice",
+                    "assets/saikoro_145.png",
+                  ),
+                  JohinkodiceLayout.discription("サイコロの目を決めよう！"),
+                  DefineDice(),
                   const Padding(padding: EdgeInsets.symmetric(vertical: 30)),
                 ],
               ),

@@ -36,7 +36,7 @@ class DefineDice extends StatelessWidget {
                   SizedBox(width: 15),
                   Container(
                     height: 30,
-                    width: 100,
+                    width: 120,
                     padding: const EdgeInsets.symmetric(horizontal: 10),
                     decoration: BoxDecoration(
                       border: Border.all(color: Colors.blue),
