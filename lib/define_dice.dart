@@ -21,40 +21,43 @@ class DefineDice extends StatelessWidget {
           },
         ),
         Container(
+          height: 50,
+          margin: const EdgeInsets.only(top: 10.0),
           child: ListView.builder(
-            // scrollDirection: Axis.horizontal,
-            shrinkWrap: true,
+            scrollDirection: Axis.horizontal,
             itemCount: nkoController.dices.length,
-            itemBuilder: (BuildContext context, int index) {
-              // 初期値
+            itemBuilder: (context, index) {
               textFieldControllers
                   .add(TextEditingController(text: nkoController.dices[index]));
-              return Row(
-                children: <Widget>[
-                  Expanded(
-                    child: TextField(
-                      inputFormatters: [
-                        LengthLimitingTextInputFormatter(1),
-                      ],
-                      decoration: const InputDecoration(
-                        border: OutlineInputBorder(),
-                        hintText: "（例）イ",
-                      ),
-                      controller: textFieldControllers[index],
-                      onChanged: (text) {
-                        nkoController.dices[index] = text;
-                      },
-                    ),
+
+              return SizedBox(
+                width: 125,
+                child: Container(
+                  decoration: BoxDecoration(
+                    border: Border.all(color: Colors.red),
+                    borderRadius: BorderRadius.circular(10),
                   ),
-                  InkWell(
-                    child: const Icon(Icons.close),
-                    onTap: () {
-                      if (nkoController.dices.isNotEmpty) {
-                        nkoController.removeDiceAt(index);
-                      }
+                  child: TextField(
+                    inputFormatters: [
+                      LengthLimitingTextInputFormatter(1),
+                    ],
+                    decoration: InputDecoration(
+                      suffix: InkWell(
+                        child: const Icon(Icons.close),
+                        onTap: () {
+                          if (nkoController.dices.isNotEmpty) {
+                            nkoController.removeDiceAt(index);
+                          }
+                        },
+                      ),
+                      hintText: "（例）イ",
+                    ),
+                    controller: textFieldControllers[index],
+                    onChanged: (text) {
+                      nkoController.dices[index] = text;
                     },
-                  )
-                ],
+                  ),
+                ),
               );
             },
           ),
