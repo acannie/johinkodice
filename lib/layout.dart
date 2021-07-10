@@ -75,4 +75,15 @@ class JohinkodiceLayout {
       ),
     );
   }
+
+  static Text attentionText(String text) {
+    return Text(
+      text,
+      style: TextStyle(
+        fontWeight: FontWeight.bold,
+        fontSize: 15,
+        color: Colors.black45,
+      ),
+    );
+  }
 }

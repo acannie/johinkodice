@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:flutter/services.dart';
 
 import 'controller.dart';
+import 'layout.dart';
 
 // サイコロの目を定義するテキストフィールドのリスト
 class DefineDice extends StatelessWidget {
@@ -67,17 +68,11 @@ class DefineDice extends StatelessWidget {
               ),
             );
           },
-        ), // リストが空のときに表示
+        ),
+        // リストが空のときに表示
         Visibility(
           visible: nkoController.dices.isEmpty,
-          child: const Text(
-            "サイコロの目を設定してね！",
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: 15,
-              color: Colors.black45,
-            ),
-          ),
+          child: JohinkodiceLayout.attentionText("サイコロの目を設定してね！"),
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
