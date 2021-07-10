@@ -24,9 +24,17 @@ class DefineKeywords extends StatelessWidget {
               children: <Widget>[
                 Expanded(
                   child: TextField(
-                    decoration: const InputDecoration(
+                    decoration: InputDecoration(
                       border: OutlineInputBorder(),
                       hintText: "（例）イタリア",
+                      suffix: InkWell(
+                        child: const Icon(Icons.close, size: 20),
+                        onTap: () {
+                          if (nkoController.keywords.isNotEmpty) {
+                            nkoController.removeKeywordAt(index);
+                          }
+                        },
+                      ),
                     ),
                     controller: textFieldControllers[index],
                     onChanged: (text) {
@@ -34,14 +42,6 @@ class DefineKeywords extends StatelessWidget {
                     },
                   ),
                 ),
-                InkWell(
-                  child: const Icon(Icons.close),
-                  onTap: () {
-                    if (nkoController.keywords.isNotEmpty) {
-                      nkoController.removeKeywordAt(index);
-                    }
-                  },
-                )
               ],
             );
           },
