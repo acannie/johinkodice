@@ -11,7 +11,7 @@ class Johindice extends StatelessWidget {
   Widget appBarMain() {
     return AppBar(
       title: const Text('JOHINKODICE'),
-      backgroundColor: Colors.orange,
+      backgroundColor: Colors.blue[100],
       centerTitle: true,
       actions: <Widget>[],
     );
@@ -32,18 +32,27 @@ class Johindice extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
                 JohinkodiceLayout.titleStyle(
-                    "Keywords", "assets/bunbougu_memo.png"),
+                  "Keywords",
+                  "assets/bunbougu_memo.png",
+                ),
                 JohinkodiceLayout.discription("サイコロを転がして作りたいキーワードを決めよう！"),
                 DefineKeywords(),
                 JohinkodiceLayout.titleStyle(
-                    "Dice Number", "./assets/counter.png"),
+                  "Dice Number",
+                  "./assets/counter.png",
+                ),
                 JohinkodiceLayout.discription("転がすサイコロの数を決めよう！"),
                 DefineDiceNum(),
-                JohinkodiceLayout.titleStyle("Dice", "assets/saikoro_145.png"),
+                JohinkodiceLayout.titleStyle(
+                  "Dice",
+                  "assets/saikoro_145.png",
+                ),
                 JohinkodiceLayout.discription("サイコロの目を決めよう！"),
                 DefineDice(),
                 JohinkodiceLayout.titleStyle(
-                    "Let's Play!", "assets/character_game_dice.png"),
+                  "Let's Play!",
+                  "assets/character_game_dice.png",
+                ),
                 JohinkodiceLayout.discription("サイコロを転がそう！"),
                 PlayJohindice(),
               ],
