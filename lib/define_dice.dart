@@ -20,24 +20,36 @@ class DefineDice extends StatelessWidget {
             nkoController.initDice();
           },
         ),
-        Container(
-          child: ListView.builder(
-            // scrollDirection: Axis.horizontal,
-            shrinkWrap: true,
-            itemCount: nkoController.dices.length,
-            itemBuilder: (BuildContext context, int index) {
-              // 初期値
-              textFieldControllers
-                  .add(TextEditingController(text: nkoController.dices[index]));
-              return Row(
-                children: <Widget>[
-                  Expanded(
+        ListView.builder(
+          shrinkWrap: true,
+          itemCount: nkoController.dices.length,
+          itemBuilder: (context, index) {
+            textFieldControllers
+                .add(TextEditingController(text: nkoController.dices[index]));
+
+            return Row(
+              children: [
+                Text((index + 1).toString() + "面"),
+                Expanded(
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 10),
+                    decoration: BoxDecoration(
+                      border: Border.all(color: Colors.red),
+                      borderRadius: BorderRadius.circular(5),
+                    ),
                     child: TextField(
                       inputFormatters: [
                         LengthLimitingTextInputFormatter(1),
                       ],
-                      decoration: const InputDecoration(
-                        border: OutlineInputBorder(),
+                      decoration: InputDecoration(
+                        suffix: InkWell(
+                          child: const Icon(Icons.close, size: 20),
+                          onTap: () {
+                            if (nkoController.dices.isNotEmpty) {
+                              nkoController.removeDiceAt(index);
+                            }
+                          },
+                        ),
                         hintText: "（例）イ",
                       ),
                       controller: textFieldControllers[index],
@@ -46,18 +58,10 @@ class DefineDice extends StatelessWidget {
                       },
                     ),
                   ),
-                  InkWell(
-                    child: const Icon(Icons.close),
-                    onTap: () {
-                      if (nkoController.dices.isNotEmpty) {
-                        nkoController.removeDiceAt(index);
-                      }
-                    },
-                  )
-                ],
-              );
-            },
-          ),
+                ),
+              ],
+            );
+          },
         ),
         Row(
           children: [

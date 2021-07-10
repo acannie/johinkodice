@@ -19,18 +19,13 @@ class PlayJohindice extends StatelessWidget {
             nkoController.generateDice();
           },
         ),
-        ListView.builder(
-          shrinkWrap: true,
-          itemCount: nkoController.gotDices.length,
-          itemBuilder: (BuildContext context, int index) {
-            return Row(
-              children: <Widget>[
-                Expanded(
-                  child: Text(nkoController.gotDices[index]),
-                ),
-              ],
-            );
-          },
+        Row(
+          children: <Widget>[
+            for (int i = 0; i < nkoController.gotDices.length; i++)
+              Expanded(
+                child: Text(nkoController.gotDices[i]),
+              ),
+          ],
         ),
         ListView.builder(
           shrinkWrap: true,
