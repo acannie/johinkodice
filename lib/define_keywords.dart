@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter/services.dart';
 
 import 'controller.dart';
 
@@ -24,6 +25,9 @@ class DefineKeywords extends StatelessWidget {
               children: <Widget>[
                 Expanded(
                   child: TextField(
+                    inputFormatters: [
+                      LengthLimitingTextInputFormatter(10),
+                    ],
                     decoration: InputDecoration(
                       border: OutlineInputBorder(),
                       hintText: "（例）イタリア",
@@ -38,7 +42,7 @@ class DefineKeywords extends StatelessWidget {
                     ),
                     controller: textFieldControllers[index],
                     onChanged: (text) {
-                      nkoController.keywords[index] = text;
+                      nkoController.setKeyword(index, text);
                     },
                   ),
                 ),

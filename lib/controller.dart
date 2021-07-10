@@ -6,6 +6,21 @@ import 'package:provider/provider.dart';
 
 // JOUHINKODICE 全体で使用する変数の状態を管理する
 class NkoCharController with ChangeNotifier {
+  // 定数
+  // 接頭語
+  List<String> prefix = [
+    "",
+    "ダブル",
+    "トリプル",
+    "クアドラブル",
+    "クインティブル",
+    "セクスタプル",
+    "セプタプル",
+    "オクタプル",
+    "ノナプル",
+    "ディカプル",
+  ];
+
   // 単語の管理
   List<String> get keywords => _keywords;
   final List<String> _keywords = [
@@ -21,12 +36,20 @@ class NkoCharController with ChangeNotifier {
 
   void removeKeywordAt(int index) {
     _keywords.removeAt(index);
+    _updateMaxDiceNum();
     notifyListeners();
   }
 
   void clearKeyword() {
     _keywords.clear();
     _keywords.add("");
+    _updateMaxDiceNum();
+    notifyListeners();
+  }
+
+  void setKeyword(int index, String text) {
+    _keywords[index] = text;
+    _updateMaxDiceNum();
     notifyListeners();
   }
 
@@ -63,7 +86,7 @@ class NkoCharController with ChangeNotifier {
 
   // サイコロの数
   int get diceNum => _diceNum;
-  int _diceNum = 5;
+  int _diceNum = 1;
 
   int get maxDiceNum => _maxDiceNum;
   int _maxDiceNum = 5;
@@ -73,21 +96,23 @@ class NkoCharController with ChangeNotifier {
 
   void _setDiceList() {
     _diceNumList.clear();
-    for (int i = 0; i < _diceNum; i++) {
+    for (int i = 0; i < _maxDiceNum; i++) {
       _diceNumList.add(i + 1);
     }
   }
 
-  void _autoDiceList() {
-    _diceNumList.clear();
-    for (int i = 0; i < _diceNum; i++) {
-      _diceNumList.add(i + 1);
+  void _updateMaxDiceNum() {
+    int minKeywordLength = 100;
+    for (String keyword in _keywords) {
+      minKeywordLength = min(keyword.length, minKeywordLength);
     }
+    _maxDiceNum = minKeywordLength * prefix.length;
+    _maxDiceNum = min(100, _maxDiceNum);
+    _setDiceList();
   }
 
   void setDiceNum(int n) {
     _diceNum = n;
-    _setDiceList();
     notifyListeners();
   }
 
@@ -128,20 +153,6 @@ class NkoCharController with ChangeNotifier {
   void _judgment(String keyword, List<String> gotDices) {
     // keyword に含まれる最大数
     int maxCount = (gotDices.length / keyword.length).floor();
-
-    // 接頭語
-    List<String> prefix = [
-      "",
-      "ダブル",
-      "トリプル",
-      "クアドラブル",
-      "クインティブル",
-      "セクスタプル",
-      "セプタプル",
-      "オクタプル",
-      "ノナプル",
-      "ディカプル",
-    ];
 
     // 多いコンボから順に単語成立を調査
     for (int i = 0; i < maxCount; i++) {
