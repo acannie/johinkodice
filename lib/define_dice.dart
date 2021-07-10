@@ -34,7 +34,7 @@ class DefineDice extends StatelessWidget {
                   child: Container(
                     padding: const EdgeInsets.symmetric(horizontal: 10),
                     decoration: BoxDecoration(
-                      border: Border.all(color: Colors.red),
+                      border: Border.all(color: Colors.blue),
                       borderRadius: BorderRadius.circular(5),
                     ),
                     child: TextField(
