@@ -29,16 +29,34 @@ class JohinkodiceLayout {
           ],
         ),
       ),
-      // child: Text(
-      //   text,
-      //   overflow: TextOverflow.clip,
-      //   textAlign: TextAlign.start,
-      //   style: TextStyle(
-      //     fontWeight: FontWeight.bold,
-      //     fontSize: 40,
-      //     color: Colors.indigo[900],
-      //   ),
-      // ),
+    );
+  }
+
+  static Widget subTitleStyle(String text, String imagePath) {
+    return Container(
+      padding: const EdgeInsets.only(top: 50, bottom: 10),
+      child: Align(
+        alignment: Alignment.topLeft,
+        child: Wrap(
+          children: <Widget>[
+            SizedBox(
+              height: 30.0,
+              child: Image(image: AssetImage(imagePath)),
+            ),
+            const Padding(padding: EdgeInsets.symmetric(horizontal: 10)),
+            Text(
+              text,
+              overflow: TextOverflow.clip,
+              textAlign: TextAlign.start,
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 30,
+                color: Colors.indigo[200],
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 
