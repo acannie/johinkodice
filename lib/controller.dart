@@ -36,20 +36,17 @@ class NkoCharController with ChangeNotifier {
 
   void removeKeywordAt(int index) {
     _keywords.removeAt(index);
-    _updateMaxDiceNum();
     notifyListeners();
   }
 
   void clearKeyword() {
     _keywords.clear();
     _keywords.add("");
-    _updateMaxDiceNum();
     notifyListeners();
   }
 
   void setKeyword(int index, String text) {
     _keywords[index] = text;
-    _updateMaxDiceNum();
     notifyListeners();
   }
 
@@ -88,28 +85,8 @@ class NkoCharController with ChangeNotifier {
   int get diceNum => _diceNum;
   int _diceNum = 1;
 
-  int get maxDiceNum => _maxDiceNum;
-  int _maxDiceNum = 5;
-
   List<int> get diceNumList => _diceNumList;
-  List<int> _diceNumList = [1, 2, 3, 4, 5];
-
-  void _setDiceList() {
-    _diceNumList.clear();
-    for (int i = 0; i < _maxDiceNum; i++) {
-      _diceNumList.add(i + 1);
-    }
-  }
-
-  void _updateMaxDiceNum() {
-    int minKeywordLength = 100;
-    for (String keyword in _keywords) {
-      minKeywordLength = min(keyword.length, minKeywordLength);
-    }
-    _maxDiceNum = minKeywordLength * prefix.length;
-    _maxDiceNum = min(100, _maxDiceNum);
-    _setDiceList();
-  }
+  List<int> _diceNumList = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
   void setDiceNum(int n) {
     _diceNum = n;
