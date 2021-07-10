@@ -4,6 +4,7 @@ import 'define_keywords.dart';
 import 'define_dice.dart';
 import 'ogehindice.dart';
 import 'define_dice_num.dart';
+import 'layout.dart';
 
 // ページ全体のレイアウトを生成
 class Johindice extends StatelessWidget {
@@ -30,9 +31,20 @@ class Johindice extends StatelessWidget {
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
+                JohinkodiceLayout.titleStyle(
+                    "Keywords", "assets/bunbougu_memo.png"),
+                JohinkodiceLayout.discription("サイコロを転がして作りたいキーワードを決めよう！"),
                 DefineKeywords(),
+                JohinkodiceLayout.titleStyle(
+                    "Dice Number", "./assets/counter.png"),
+                JohinkodiceLayout.discription("転がすサイコロの数を決めよう！"),
                 DefineDiceNum(),
+                JohinkodiceLayout.titleStyle("Dice", "assets/saikoro_145.png"),
+                JohinkodiceLayout.discription("サイコロの目を決めよう！"),
                 DefineDice(),
+                JohinkodiceLayout.titleStyle(
+                    "Let's Play!", "assets/character_game_dice.png"),
+                JohinkodiceLayout.discription("サイコロを転がそう！"),
                 PlayJohindice(),
               ],
             ),
