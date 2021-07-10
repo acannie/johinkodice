@@ -13,15 +13,16 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        title: 'JOHINKODICE',
-        theme: ThemeData(
-          primarySwatch: Colors.blue,
-        ),
-        home: MultiProvider(
-          child: Johindice(),
-          providers: [
-            ChangeNotifierProvider(create: (context) => NkoCharController()),
-          ],
-        ));
+      title: 'JOHINKODICE',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: MultiProvider(
+        child: Johindice(),
+        providers: [
+          ChangeNotifierProvider(create: (context) => NkoCharController()),
+        ],
+      ),
+    );
   }
 }

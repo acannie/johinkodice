@@ -61,9 +61,37 @@ class NkoCharController with ChangeNotifier {
     notifyListeners();
   }
 
-  // サイコロを振る処理
+  // サイコロの数
   int get diceNum => _diceNum;
-  final int _diceNum = 5;
+  int _diceNum = 5;
+
+  int get maxDiceNum => _maxDiceNum;
+  int _maxDiceNum = 5;
+
+  List<int> get diceNumList => _diceNumList;
+  List<int> _diceNumList = [1, 2, 3, 4, 5];
+
+  void _setDiceList() {
+    _diceNumList.clear();
+    for (int i = 0; i < _diceNum; i++) {
+      _diceNumList.add(i + 1);
+    }
+  }
+
+  void _autoDiceList() {
+    _diceNumList.clear();
+    for (int i = 0; i < _diceNum; i++) {
+      _diceNumList.add(i + 1);
+    }
+  }
+
+  void setDiceNum(int n) {
+    _diceNum = n;
+    _setDiceList();
+    notifyListeners();
+  }
+
+  // サイコロを振る処理
   List<String> get gotDices => _gotDice;
   final List<String> _gotDice = [];
 
