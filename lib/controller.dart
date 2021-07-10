@@ -83,10 +83,21 @@ class NkoCharController with ChangeNotifier {
 
   // サイコロの数
   int get diceNum => _diceNum;
-  int _diceNum = 1;
+  int _diceNum = 10;
 
   List<int> get diceNumList => _diceNumList;
-  List<int> _diceNumList = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+  final List<int> _diceNumList = [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
+  ]; // HACK 美しく初期化したい。
 
   void setDiceNum(int n) {
     _diceNum = n;
