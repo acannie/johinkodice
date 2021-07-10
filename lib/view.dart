@@ -26,36 +26,39 @@ class Johindice extends StatelessWidget {
       ),
       body: Center(
         child: SingleChildScrollView(
-          child: Container(
-            padding: EdgeInsets.all(0),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: <Widget>[
-                JohinkodiceLayout.titleStyle(
-                  "Keywords",
-                  "assets/bunbougu_memo.png",
-                ),
-                JohinkodiceLayout.discription("サイコロを転がして作りたいキーワードを決めよう！"),
-                DefineKeywords(),
-                JohinkodiceLayout.titleStyle(
-                  "Dice Number",
-                  "./assets/counter.png",
-                ),
-                JohinkodiceLayout.discription("転がすサイコロの数を決めよう！"),
-                DefineDiceNum(),
-                JohinkodiceLayout.titleStyle(
-                  "Dice",
-                  "assets/saikoro_145.png",
-                ),
-                JohinkodiceLayout.discription("サイコロの目を決めよう！"),
-                DefineDice(),
-                JohinkodiceLayout.titleStyle(
-                  "Let's Play!",
-                  "assets/character_game_dice.png",
-                ),
-                JohinkodiceLayout.discription("サイコロを転がそう！"),
-                PlayJohindice(),
-              ],
+          child: ConstrainedBox(
+            constraints: const BoxConstraints(maxWidth: 800),
+            child: Container(
+              padding: const EdgeInsets.all(0),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: <Widget>[
+                  JohinkodiceLayout.titleStyle(
+                    "Keywords",
+                    "assets/bunbougu_memo.png",
+                  ),
+                  JohinkodiceLayout.discription("サイコロを転がして作りたいキーワードを決めよう！"),
+                  DefineKeywords(),
+                  JohinkodiceLayout.titleStyle(
+                    "Dice Number",
+                    "./assets/counter.png",
+                  ),
+                  JohinkodiceLayout.discription("転がすサイコロの数を決めよう！"),
+                  DefineDiceNum(),
+                  JohinkodiceLayout.titleStyle(
+                    "Dice",
+                    "assets/saikoro_145.png",
+                  ),
+                  JohinkodiceLayout.discription("サイコロの目を決めよう！"),
+                  DefineDice(),
+                  JohinkodiceLayout.titleStyle(
+                    "Let's Play!",
+                    "assets/character_game_dice.png",
+                  ),
+                  JohinkodiceLayout.discription("サイコロを転がそう！"),
+                  PlayJohindice(),
+                ],
+              ),
             ),
           ),
         ),
