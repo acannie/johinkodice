@@ -22,14 +22,21 @@ class DefineKeywords extends StatelessWidget {
             textFieldControllers.add(
                 TextEditingController(text: nkoController.keywords[index]));
             return Row(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                Expanded(
+                Container(
+                  height: 30,
+                  width: 220,
+                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                  decoration: BoxDecoration(
+                    border: Border.all(color: Colors.blue),
+                    borderRadius: BorderRadius.circular(5),
+                  ),
                   child: TextField(
                     inputFormatters: [
                       LengthLimitingTextInputFormatter(10),
                     ],
                     decoration: InputDecoration(
-                      border: OutlineInputBorder(),
                       hintText: "（例）イタリア",
                       suffix: InkWell(
                         child: const Icon(Icons.close, size: 20),
@@ -51,6 +58,7 @@ class DefineKeywords extends StatelessWidget {
           },
         ),
         Row(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             // 新規作成ボタン
             IconButton(
@@ -69,7 +77,7 @@ class DefineKeywords extends StatelessWidget {
               },
             ),
           ],
-        )
+        ),
       ],
     );
   }
