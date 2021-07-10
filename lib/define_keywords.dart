@@ -57,6 +57,18 @@ class DefineKeywords extends StatelessWidget {
             );
           },
         ),
+        // リストが空のときに表示
+        Visibility(
+          visible: nkoController.keywords.isEmpty,
+          child: const Text(
+            "キーワードを作ってね！",
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 15,
+              color: Colors.black45,
+            ),
+          ),
+        ),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -68,13 +80,16 @@ class DefineKeywords extends StatelessWidget {
               },
             ),
             // 一括削除ボタン
-            IconButton(
-              icon: const Icon(Icons.update),
-              onPressed: () {
-                if (nkoController.keywords.isNotEmpty) {
-                  nkoController.clearKeyword();
-                }
-              },
+            Visibility(
+              visible: nkoController.keywords.isNotEmpty,
+              child: IconButton(
+                icon: const Icon(Icons.update),
+                onPressed: () {
+                  if (nkoController.keywords.isNotEmpty) {
+                    nkoController.clearKeyword();
+                  }
+                },
+              ),
             ),
           ],
         ),

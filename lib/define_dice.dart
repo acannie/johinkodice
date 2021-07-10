@@ -33,7 +33,7 @@ class DefineDice extends StatelessWidget {
                 // mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text("第" + (index + 1).toString() + "面"),
-                  SizedBox(width: 15),
+                  const SizedBox(width: 15),
                   Container(
                     height: 30,
                     width: 120,
@@ -67,6 +67,17 @@ class DefineDice extends StatelessWidget {
               ),
             );
           },
+        ), // リストが空のときに表示
+        Visibility(
+          visible: nkoController.dices.isEmpty,
+          child: const Text(
+            "サイコロの目を設定してね！",
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 15,
+              color: Colors.black45,
+            ),
+          ),
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -79,13 +90,16 @@ class DefineDice extends StatelessWidget {
               },
             ),
             // 一括削除ボタン
-            IconButton(
-              icon: const Icon(Icons.update),
-              onPressed: () {
-                if (nkoController.dices.isNotEmpty) {
-                  nkoController.clearDice();
-                }
-              },
+            Visibility(
+              visible: nkoController.dices.isNotEmpty,
+              child: IconButton(
+                icon: const Icon(Icons.update),
+                onPressed: () {
+                  if (nkoController.dices.isNotEmpty) {
+                    nkoController.clearDice();
+                  }
+                },
+              ),
             ),
           ],
         )
