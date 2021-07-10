@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'define_keywords.dart';
 import 'define_dice.dart';
 import 'ogehindice.dart';
+import 'define_dice_num.dart';
 
 // ページ全体のレイアウトを生成
 class Johindice extends StatelessWidget {
@@ -30,6 +31,7 @@ class Johindice extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
                 DefineKeywords(),
+                DefineDiceNum(),
                 DefineDice(),
                 PlayJohindice(),
               ],
