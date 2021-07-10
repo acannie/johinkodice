@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:flutter/services.dart';
 
 import 'controller.dart';
+import 'layout.dart';
 
 // キーワードを定義するテキストフィールドのリスト
 class DefineKeywords extends StatelessWidget {
@@ -60,14 +61,7 @@ class DefineKeywords extends StatelessWidget {
         // リストが空のときに表示
         Visibility(
           visible: nkoController.keywords.isEmpty,
-          child: const Text(
-            "キーワードを作ってね！",
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: 15,
-              color: Colors.black45,
-            ),
-          ),
+          child: JohinkodiceLayout.attentionText("キーワードを作成してね！"),
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
