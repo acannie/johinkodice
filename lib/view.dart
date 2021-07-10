@@ -57,6 +57,7 @@ class Johindice extends StatelessWidget {
                   ),
                   JohinkodiceLayout.discription("サイコロを転がそう！"),
                   PlayJohindice(),
+                  const Padding(padding: EdgeInsets.symmetric(vertical: 30)),
                 ],
               ),
             ),

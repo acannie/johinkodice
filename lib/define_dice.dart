@@ -27,11 +27,16 @@ class DefineDice extends StatelessWidget {
             textFieldControllers
                 .add(TextEditingController(text: nkoController.dices[index]));
 
-            return Row(
-              children: [
-                Text((index + 1).toString() + "面"),
-                Expanded(
-                  child: Container(
+            return Align(
+              alignment: Alignment.center,
+              child: Wrap(
+                // mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text("第" + (index + 1).toString() + "面"),
+                  SizedBox(width: 15),
+                  Container(
+                    height: 30,
+                    width: 100,
                     padding: const EdgeInsets.symmetric(horizontal: 10),
                     decoration: BoxDecoration(
                       border: Border.all(color: Colors.blue),
@@ -58,12 +63,13 @@ class DefineDice extends StatelessWidget {
                       },
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             );
           },
         ),
         Row(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             // 新規作成ボタン
             IconButton(
