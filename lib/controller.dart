@@ -111,6 +111,12 @@ class NkoCharController with ChangeNotifier {
   void _deleteEmptyTextField() {
     _dice.remove("");
     _keywords.remove("");
+    if (_dice.isEmpty) {
+      _dice.add("");
+    }
+    if (_keywords.isEmpty) {
+      _keywords.add("");
+    }
   }
 
   void generateDice() {
