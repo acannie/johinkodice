@@ -20,7 +20,7 @@ class PlayJohindice extends StatelessWidget {
     // グラデーション
     Gradient redGradient = const LinearGradient(
       colors: [
-        Color.fromARGB(255, 241, 61, 47),
+        Color.fromARGB(255, 251, 71, 57),
         Color.fromARGB(255, 95, 16, 19),
       ],
       begin: Alignment.topCenter,
