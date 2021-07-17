@@ -248,7 +248,7 @@ class PlayJohindice extends StatelessWidget {
               children: <Widget>[
                 Expanded(
                   child: premiumText(
-                    nkoController.results[index] + "!",
+                    nkoController.results[index] + "!  ",
                   ),
                 ),
               ],
