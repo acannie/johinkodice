@@ -11,6 +11,7 @@ class DefineDiceNum extends StatelessWidget {
         Provider.of<NkoCharController>(context);
 
     return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
         DropdownButton<int>(
           value: nkoController.diceNum,
