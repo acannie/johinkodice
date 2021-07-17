@@ -13,7 +13,8 @@ class PlayJohindice extends StatelessWidget {
 
     return Column(
       children: <Widget>[
-        Container(
+        // Play! ボタン
+        SizedBox(
           height: 60,
           width: 120,
           child: ElevatedButton(
@@ -33,12 +34,14 @@ class PlayJohindice extends StatelessWidget {
         ),
         Row(
           children: <Widget>[
+            // 出た目
             for (int i = 0; i < nkoController.gotDices.length; i++)
               Expanded(
                 child: Text(nkoController.gotDices[i]),
               ),
           ],
         ),
+        // 完成した単語
         ListView.builder(
           shrinkWrap: true,
           itemCount: nkoController.results.length,
