@@ -39,11 +39,11 @@ class PlayJohindice extends StatelessWidget {
       end: Alignment.bottomCenter,
     );
 
-    Gradient whiteGradient = const LinearGradient(
+    Gradient whiteGradient = LinearGradient(
       colors: [
         Colors.white,
         Colors.white,
-        Colors.grey,
+        Colors.grey[300]!,
         Colors.white,
         Colors.white,
       ],
@@ -60,7 +60,7 @@ class PlayJohindice extends StatelessWidget {
             text,
             style: TextStyle(
               fontStyle: FontStyle.italic,
-              fontSize: 42.5,
+              fontSize: 42.2,
               foreground: Paint()
                 ..style = PaintingStyle.stroke
                 ..strokeWidth = 13
@@ -193,7 +193,6 @@ class PlayJohindice extends StatelessWidget {
 
     return Column(
       children: <Widget>[
-        premiumText("5000兆円  "),
         // Play! ボタン
         SizedBox(
           height: 60,
@@ -246,13 +245,10 @@ class PlayJohindice extends StatelessWidget {
           itemCount: nkoController.results.length,
           itemBuilder: (BuildContext context, int index) {
             return Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              // crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
                 Expanded(
-                  child: Text(
-                    nkoController.results[index],
-                    style: TextStyle(color: Colors.red[800], fontSize: 50),
+                  child: premiumText(
+                    nkoController.results[index] + "!",
                   ),
                 ),
               ],
