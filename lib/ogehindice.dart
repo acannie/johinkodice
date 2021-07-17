@@ -13,11 +13,23 @@ class PlayJohindice extends StatelessWidget {
 
     return Column(
       children: <Widget>[
-        InkWell(
-          child: Text("サイコロを振る"),
-          onTap: () {
-            nkoController.generateDice();
-          },
+        Container(
+          height: 60,
+          width: 120,
+          child: ElevatedButton(
+            child: const Text(
+              "Play!",
+              style: TextStyle(color: Colors.white, fontSize: 30),
+            ),
+            style: ElevatedButton.styleFrom(
+              primary: Colors.blue[300],
+              onPrimary: Colors.black,
+              shape: const StadiumBorder(),
+            ),
+            onPressed: () {
+              nkoController.generateDice();
+            },
+          ),
         ),
         Row(
           children: <Widget>[
