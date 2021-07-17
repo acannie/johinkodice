@@ -15,6 +15,8 @@ class PlayJohindice extends StatelessWidget {
         Provider.of<NkoCharController>(context);
     List<TextEditingController> textFieldControllers = [];
 
+    double fontSize = 80;
+
     // グラデーション
     Gradient redGradient = const LinearGradient(
       colors: [
@@ -39,11 +41,11 @@ class PlayJohindice extends StatelessWidget {
       end: Alignment.bottomCenter,
     );
 
-    Gradient whiteGradient = LinearGradient(
+    Gradient whiteGradient = const LinearGradient(
       colors: [
         Colors.white,
         Colors.white,
-        Colors.grey[300]!,
+        Colors.grey,
         Colors.white,
         Colors.white,
       ],
@@ -60,7 +62,7 @@ class PlayJohindice extends StatelessWidget {
             text,
             style: TextStyle(
               fontStyle: FontStyle.italic,
-              fontSize: 42.2,
+              fontSize: fontSize + 4.4,
               foreground: Paint()
                 ..style = PaintingStyle.stroke
                 ..strokeWidth = 13
@@ -78,7 +80,7 @@ class PlayJohindice extends StatelessWidget {
               text,
               style: TextStyle(
                 fontStyle: FontStyle.italic,
-                fontSize: 42,
+                fontSize: fontSize + 4,
                 foreground: Paint()
                   ..style = PaintingStyle.stroke
                   ..strokeWidth = 13
@@ -93,7 +95,7 @@ class PlayJohindice extends StatelessWidget {
             text,
             style: TextStyle(
               fontStyle: FontStyle.italic,
-              fontSize: 41,
+              fontSize: fontSize + 2,
               foreground: Paint()
                 ..style = PaintingStyle.stroke
                 ..strokeWidth = 13
@@ -118,7 +120,7 @@ class PlayJohindice extends StatelessWidget {
               text,
               style: TextStyle(
                 fontStyle: FontStyle.italic,
-                fontSize: 40,
+                fontSize: fontSize,
                 foreground: Paint()
                   ..style = PaintingStyle.stroke
                   ..strokeWidth = 12
@@ -137,13 +139,13 @@ class PlayJohindice extends StatelessWidget {
               text,
               style: TextStyle(
                 fontStyle: FontStyle.italic,
-                fontSize: 40,
+                fontSize: fontSize,
                 foreground: Paint()
                   ..style = PaintingStyle.stroke
                   ..strokeWidth = 4
                   ..color = Colors.white,
                 fontWeight: FontWeight.w900,
-                shadows: <Shadow>[
+                shadows: const <Shadow>[
                   Shadow(
                     color: Colors.black87,
                     offset: Offset(3.0, 3.0),
@@ -157,12 +159,12 @@ class PlayJohindice extends StatelessWidget {
           // 内側の文字の光
           Text(
             text,
-            style: const TextStyle(
+            style: TextStyle(
               fontStyle: FontStyle.italic,
-              fontSize: 40,
+              fontSize: fontSize,
               color: Colors.white,
               fontWeight: FontWeight.w900,
-              shadows: <Shadow>[
+              shadows: const <Shadow>[
                 Shadow(
                   color: Color.fromARGB(255, 202, 127, 124),
                   offset: Offset(-1.0, -1.0),
@@ -179,9 +181,9 @@ class PlayJohindice extends StatelessWidget {
             ),
             child: Text(
               text,
-              style: const TextStyle(
+              style: TextStyle(
                 fontStyle: FontStyle.italic,
-                fontSize: 40,
+                fontSize: fontSize,
                 color: Colors.white,
                 fontWeight: FontWeight.w900,
               ),
