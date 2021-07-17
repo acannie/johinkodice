@@ -160,7 +160,7 @@ class NkoCharController with ChangeNotifier {
       }
 
       if (establised) {
-        _results.add("★ " + prefix[reversedI] + keyword + "！");
+        _results.add(prefix[reversedI] + keyword);
         return;
       }
     }
