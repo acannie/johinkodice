@@ -77,7 +77,7 @@ class DefineKeywords extends StatelessWidget {
             Visibility(
               visible: nkoController.keywords.isNotEmpty,
               child: IconButton(
-                icon: const Icon(Icons.update),
+                icon: const Icon(Icons.delete),
                 onPressed: () {
                   if (nkoController.keywords.isNotEmpty) {
                     nkoController.clearKeyword();

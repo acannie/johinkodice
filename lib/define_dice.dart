@@ -108,7 +108,7 @@ class DefineDice extends StatelessWidget {
             Visibility(
               visible: nkoController.dices.isNotEmpty,
               child: IconButton(
-                icon: const Icon(Icons.update),
+                icon: const Icon(Icons.delete),
                 onPressed: () {
                   if (nkoController.dices.isNotEmpty) {
                     nkoController.clearDice();
