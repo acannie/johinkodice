@@ -3,7 +3,7 @@ import 'package:url_launcher/url_launcher.dart';
 
 import 'define_keywords.dart';
 import 'define_dice.dart';
-import 'ogehindice.dart';
+import 'play_johindice.dart';
 import 'define_dice_num.dart';
 import 'layout.dart';
 
