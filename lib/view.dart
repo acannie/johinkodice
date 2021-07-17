@@ -47,12 +47,15 @@ class Johindice extends StatelessWidget {
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: <Widget>[
+                  // Let's Play!
                   JohinkodiceLayout.titleStyle(
                     "Let's Play!",
                     "assets/character_game_dice.png",
                   ),
                   JohinkodiceLayout.discription("サイコロを転がそう！"),
                   PlayJohindice(),
+                  // Settings
+                  // Keywords
                   JohinkodiceLayout.titleStyle(
                     "Settings",
                     "assets/dougu_spanner.png",
@@ -63,12 +66,14 @@ class Johindice extends StatelessWidget {
                   ),
                   JohinkodiceLayout.discription("サイコロを転がして作りたいキーワードを決めよう！"),
                   DefineKeywords(),
+                  // Dice Number
                   JohinkodiceLayout.subTitleStyle(
                     "Dice Number",
                     "assets/counter.png",
                   ),
                   JohinkodiceLayout.discription("転がすサイコロの数を決めよう！"),
                   DefineDiceNum(),
+                  // Dice
                   JohinkodiceLayout.subTitleStyle(
                     "Dice",
                     "assets/saikoro_145.png",
