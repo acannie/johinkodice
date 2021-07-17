@@ -66,13 +66,6 @@ class Johindice extends StatelessWidget {
                   ),
                   JohinkodiceLayout.discription("サイコロを転がして作りたいキーワードを決めよう！"),
                   DefineKeywords(),
-                  // Dice Number
-                  JohinkodiceLayout.subTitleStyle(
-                    "Dice Number",
-                    "assets/counter.png",
-                  ),
-                  JohinkodiceLayout.discription("転がすサイコロの数を決めよう！"),
-                  DefineDiceNum(),
                   // Dice
                   JohinkodiceLayout.subTitleStyle(
                     "Dice",
@@ -80,6 +73,14 @@ class Johindice extends StatelessWidget {
                   ),
                   JohinkodiceLayout.discription("サイコロの目を決めよう！"),
                   DefineDice(),
+                  // Dice Number
+                  JohinkodiceLayout.subTitleStyle(
+                    "Dice Number",
+                    "assets/counter.png",
+                  ),
+                  JohinkodiceLayout.discription("転がすサイコロの数を決めよう！"),
+                  DefineDiceNum(),
+
                   const Padding(padding: EdgeInsets.symmetric(vertical: 30)),
                 ],
               ),
