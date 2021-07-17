@@ -17,11 +17,11 @@ class DefineDice extends StatelessWidget {
       children: <Widget>[
         Row(
           children: [
-            Container(
+            SizedBox(
               height: 50,
               width: 50,
               child: ElevatedButton(
-                child: const Icon(Icons.update),
+                child: const Icon(Icons.update, color: Colors.white),
                 onPressed: () {
                   nkoController.initDice();
                 },
@@ -117,7 +117,7 @@ class DefineDice extends StatelessWidget {
               ),
             ),
           ],
-        )
+        ),
       ],
     );
   }
