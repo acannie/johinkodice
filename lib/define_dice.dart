@@ -15,12 +15,32 @@ class DefineDice extends StatelessWidget {
 
     return Column(
       children: <Widget>[
-        InkWell(
-          child: const Text("サイコロの目を自動生成！"),
-          onTap: () {
-            nkoController.initDice();
-          },
+        Row(
+          children: [
+            Container(
+              height: 50,
+              width: 50,
+              child: ElevatedButton(
+                child: const Icon(Icons.update),
+                onPressed: () {
+                  nkoController.initDice();
+                },
+                style: ElevatedButton.styleFrom(
+                  primary: Colors.blue[300],
+                  onPrimary: Colors.black,
+                  shape: const StadiumBorder(),
+                ),
+              ),
+            ),
+            const Padding(padding: EdgeInsets.symmetric(horizontal: 10)),
+            const Text(
+              "Generate!",
+              style: TextStyle(fontSize: 20),
+            ),
+          ],
         ),
+
+        const Padding(padding: EdgeInsets.symmetric(vertical: 20)),
         ListView.builder(
           shrinkWrap: true,
           itemCount: nkoController.dices.length,
