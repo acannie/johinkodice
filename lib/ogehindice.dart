@@ -32,12 +32,28 @@ class PlayJohindice extends StatelessWidget {
             },
           ),
         ),
-        Row(
+        // 出た目
+        Wrap(
           children: <Widget>[
-            // 出た目
             for (int i = 0; i < nkoController.gotDices.length; i++)
-              Expanded(
-                child: Text(nkoController.gotDices[i]),
+              Wrap(
+                children: <Widget>[
+                  Container(
+                    width: 50,
+                    height: 50,
+                    alignment: Alignment.center,
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                        color: Colors.black,
+                      ),
+                    ),
+                    child: Text(
+                      nkoController.gotDices[i],
+                      style: const TextStyle(fontSize: 30),
+                    ),
+                  ),
+                  SizedBox(width: 10),
+                ],
               ),
           ],
         ),
