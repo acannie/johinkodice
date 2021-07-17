@@ -20,7 +20,7 @@ class Johindice extends StatelessWidget {
   Widget appBarMain() {
     return AppBar(
       title: const Text('JOHINKODICE'),
-      backgroundColor: Colors.blue[100],
+      backgroundColor: Colors.blue[200],
       centerTitle: true,
       actions: <Widget>[
         InkWell(
