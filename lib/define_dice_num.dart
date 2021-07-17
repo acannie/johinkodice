@@ -11,13 +11,14 @@ class DefineDiceNum extends StatelessWidget {
         Provider.of<NkoCharController>(context);
 
     return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
         DropdownButton<int>(
           value: nkoController.diceNum,
           icon: const Icon(Icons.arrow_drop_down),
           iconSize: 30,
           elevation: 16,
-          style: const TextStyle(fontSize: 20, color: Colors.black),
+          style: const TextStyle(fontSize: 30, color: Colors.black),
           underline: Container(
             height: 2,
             color: Colors.grey,
